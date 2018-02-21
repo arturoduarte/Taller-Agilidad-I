@@ -1,0 +1,258 @@
+body {
+//   background-color: #fff;
+//   color: #333;
+  margin: 80px;
+  margin-left: 40px;
+//   font-family: verdana, arial, helvetica, sans-serif;
+//   font-size: 13px;
+//   line-height: 18px;
+}
+
+
+$green: #16a085;
+$grey: #5A6576;
+$other-grey: #E7ECEE;
+$blue: #058CC5;
+$red: #ff0000;
+$light-blue: #3498DB;
+$teal: #009688;
+$gray: rgb(175, 162, 162); 
+
+/* ===========Texto=========== */
+.bold{
+	font-weight: bold;
+}
+/* ===========Colores=========== */
+
+.gray{
+	background-color: rgb(175, 162, 162); 
+}
+
+.white{
+	background-color: white;
+}
+
+.white-text{
+	color: white;
+}
+
+.teal{
+	background-color: $teal;
+}
+
+.teal-text{
+	color: $teal;
+}
+
+.green{
+	background-color: $green;
+}
+
+.green-text{
+	color: $green; 
+}
+
+.blue{
+	background-color: $blue;
+}
+
+.blue-text{
+	color: $blue;
+}
+
+.light-blue{
+	background-color: $light-blue;
+}
+
+.light-blue-text{
+	color: $light-blue;
+}
+
+.red{
+	background-color: $red;
+}
+
+.red-text{
+	color: $red;
+}
+
+.grey{
+	background-color: $grey;
+}
+
+.grey-text{
+	color: $grey;
+}
+
+.other-grey{
+	background-color: $other-grey;
+}
+.other-grey-text{
+	color: $other-grey;
+}
+
+/* ===========Paddings=========== */
+.large-padding{
+	padding:5px 10px;
+}
+
+.tall-padding{
+	padding: 10px 5px; 
+}
+
+.big-padding{
+	padding:2em;
+}
+
+.no-padding{
+	padding:0 !important;
+}
+// /*=========== Margins=========== */
+form .field, form .actions {
+	margin: 12px 0;
+}
+
+.no-margin{
+	margin:0;
+}
+
+.big-top-space{
+	margin-top:50px;
+}
+
+.top-space{
+	margin-top:1em;
+}
+
+.bottom-space{
+	margin-bottom:2em;
+}
+
+/* ===========Alineamiento=========== */
+.no-float{
+	float: none !important;
+}
+
+.in-top{
+	vertical-align:top !important;
+}
+
+.inline-block {
+	// float: none !important;
+	display: inline-block;
+	vertical-align:middle;
+	margin-right: -4px;
+}
+
+.absolute{
+	position:absolute;
+}
+/* ===========Tamaños=========== */
+.small{
+	font-size:12px;
+}
+.normal{
+	font-size: 1.2em;
+}
+.medium{
+	font-size:1.5em;
+}
+.big{
+	font-size:3em;
+}
+.bigger{
+	font-size:4em;
+}
+.ultra-big{
+	font-size:7em;
+}
+
+.center-block {
+	// display: block;
+	margin-left: auto;
+	margin-right: auto;
+	// width: 40%;
+}
+
+img{
+	max-width: 100%;
+}
+
+
+
+
+// p, ol, ul, td {
+//   font-family: verdana, arial, helvetica, sans-serif;
+//   font-size: 13px;
+//   line-height: 18px;
+// }
+
+// pre {
+//   background-color: #eee;
+//   padding: 10px;
+//   font-size: 11px;
+// }
+
+// a {
+//   color: #000;
+
+//   &:visited {
+//     color: #666;
+//   }
+
+//   &:hover {
+//     color: #fff;
+//     background-color: #000;
+//   }
+// }
+
+// th {
+//   padding-bottom: 5px;
+// }
+
+// td {
+//   padding: 0 5px 7px;
+// }
+
+// div {
+//   &.field, &.actions {
+//     margin-bottom: 10px;
+//   }
+// }
+
+// #notice {
+//   color: green;
+// }
+
+// .field_with_errors {
+//   padding: 2px;
+//   background-color: red;
+//   display: table;
+// }
+
+// #error_explanation {
+//   width: 450px;
+//   border: 2px solid red;
+//   padding: 7px 7px 0;
+//   margin-bottom: 20px;
+//   background-color: #f0f0f0;
+
+//   h2 {
+//     text-align: left;
+//     font-weight: bold;
+//     padding: 5px 5px 5px 15px;
+//     font-size: 12px;
+//     margin: -7px -7px 0;
+//     background-color: #c00;
+//     color: #fff;
+//   }
+
+//   ul li {
+//     font-size: 12px;
+//     list-style: square;
+//   }
+// }
+
+// label {
+//   display: block;
+// }
