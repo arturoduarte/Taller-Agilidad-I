@@ -8,7 +8,7 @@
 			<header>			
 				<h3 class="grey-text bold text-center card-header"><%= product.name %></h3>
 			</header>
-
+			
 			<div class="p-3">  <!-- padding de bootstrap -->
 				<section>
 					<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 inline-block no-padding text-center">
@@ -38,8 +38,9 @@
 				
 				<div class="bold text-center">
 					<br>
-					<%= link_to 'Ver Detalle', product_path(product), class:'btn btn-warning' %> 
-					<%= link_to 'Agregar', products_path, class:'btn btn-success' %>
+					
+					<%= link_to 'Ver Detalle', product_path(product), class:'btn btn-info' %> 
+					<%= link_to 'Agregar', products_path, class:'btn btn-secondary' %>
 				</div>
 			</div>
 		</div>
@@ -47,5 +48,9 @@
 	
 	<% end %>
 	
+</div>
+
+<div>
+	<%= link_to 'Agregar Nuevo Producto', new_product_path, class:'btn btn-primary' %> 
 </div>
 

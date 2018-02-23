@@ -1,42 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-
-<div id="show_product" class="card gray large-padding sombra">
+<div class="card offset-xl-2 col-xl-9 white large-padding sombra">
 	<h1 class="text-center text-success">
 		<%= @product.name %>
 	</h1>
 	
 	<div class="row">
-		
 		<div class="col-xl-6">
 			<p class="text-center">
 				<%= image_tag(@product.image_url, :width => 600, :height => 400) if @product.image.present? %>
 			</p>
 		</div>
 		
-		<div class="col-xl-6">
+		<div class="col-xl-6 pt-4 text-left">
 			<p>
-				<strong>Descripción:</strong>
+				<h1 class="green-text text-center">Descripción</h1>
+				<br>
 				<%= @product.description %>
 			</p>
 			
 			<p>
-				<strong>Price:</strong>
+				<strong class="green-text">Precio:</strong>
 				<%= @product.price %>
 			</p>
 			
 			<p>
-				<strong>Stock:</strong>
+				<strong class="green-text">Stock:</strong>
 				<%= @product.stock %>
 			</p>
 			
 			<p>
-				<strong>Stock minimum:</strong>
-				<%= @product.stock_minimum %>
-			</p>
-			
-			<p>
-				<strong>Tax:</strong>
+				<strong class="green-text">Tax:</strong>
 				<%= @product.tax %>
 			</p>
 		</div>
@@ -45,5 +39,7 @@
 	
 </div>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<div>
+	<%= link_to 'Editar', edit_product_path(@product), class: 'btn btn-warning'%> |
+	<%= link_to 'Volver', products_path, class:'btn btn-dark' %>
+</div>

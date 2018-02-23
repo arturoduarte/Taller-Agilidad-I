@@ -11,45 +11,45 @@
 </div>
 <% end %>
 
-<div class="field">
-	<%= form.label :name %>
+<div class="field green-text bold">
+	<%= form.label 'Nombre:' %>
 	<%= form.text_field :name, id: :product_name %>
 </div>
 
-<div class="field">
-	<%= form.label :description %>
+<div class="field green-text bold">
+	<%= form.label 'Descripción:' %>
 	<%= form.text_area :description, id: :product_description %>
 </div>
 
-<div class="field">
-	<%= form.label :price %>
+<div class="field green-text bold">
+	<%= form.label 'Precio:' %>
 	<%= form.text_field :price, id: :product_price %>
 </div>
 
-<div class="field">
-	<%= form.label :stock %>
+<div class="field green-text bold">
+	<%= form.label 'Stock:' %>
 	<%= form.number_field :stock, id: :product_stock %>
 </div>
 
-<div class="field">
-	<%= form.label :stock_minimum %>
+<div class="field green-text bold">
+	<%= form.label 'Stock Minimo:'%>
 	<%= form.text_field :stock_minimum, id: :product_stock_minimum %>
 </div>
 
-<div class="field">
-	<%= form.label :tax %>
+<div class="field green-text bold">
+	<%= form.label 'Impuesto:' %>
 	<%= form.number_field :tax, id: :product_tax %>
 </div>
 
-<div class="field">
-	<%= form.label :image %>
-	<%= form.file_field :image, id: :product_image %>
-	
+<div class="field green-text bold">
+	<%= form.label 'Imagen:' %>
+	<%= form.file_field :image, id: :product_image %> <br>
+	<%= form.label 'Carga por URL:' %>
 	<%= form.text_field :remote_image_url, id: :remote_image_url %>
 	
 </div>
 
 <div class="actions">
-	<%= form.submit %>
+	<%= form.submit 'Guardar', class:'btn btn-success' %>
 </div>
 <% end %>

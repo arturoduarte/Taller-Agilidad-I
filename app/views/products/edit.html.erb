@@ -1,6 +1,11 @@
-<h1>Editing Product</h1>
-
-<%= render 'form', product: @product %>
-
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<div class="row">
+	<div class="card offset-xl-2 col-xl-9 white large-padding sombra text-left">
+		<h1 class="text-center text-success">Editar Producto</h1>
+		
+		<%= render 'form', product: @product %>
+		
+		
+	</div>
+</div>
+<%= link_to 'Mostrar', @product, class:'btn btn-info' %> |
+<%= link_to 'Volver', products_path, class:'btn btn-dark' %>
