@@ -1,39 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-	<strong>Name:</strong>
-	<%= @product.name %>
-</p>
 
-<p>
-	<strong>Description:</strong>
-	<%= @product.description %>
-</p>
-
-<p>
-	<strong>Price:</strong>
-	<%= @product.price %>
-</p>
-
-<p>
-	<strong>Stock:</strong>
-	<%= @product.stock %>
-</p>
-
-<p>
-	<strong>Stock minimum:</strong>
-	<%= @product.stock_minimum %>
-</p>
-
-<p>
-	<strong>Tax:</strong>
-	<%= @product.tax %>
-</p>
-
-<p>
-	<strong>Image:</strong>
-		<%= image_tag(@product.image_url, :width => 170, :height => 190) if @product.image.present? %>
-</p>
+<div id="show_product" class="card gray large-padding sombra">
+	<h1 class="text-center text-success">
+		<%= @product.name %>
+	</h1>
+	
+	<div class="row">
+		
+		<div class="col-xl-6">
+			<p class="text-center">
+				<%= image_tag(@product.image_url, :width => 600, :height => 400) if @product.image.present? %>
+			</p>
+		</div>
+		
+		<div class="col-xl-6">
+			<p>
+				<strong>Descripción:</strong>
+				<%= @product.description %>
+			</p>
+			
+			<p>
+				<strong>Price:</strong>
+				<%= @product.price %>
+			</p>
+			
+			<p>
+				<strong>Stock:</strong>
+				<%= @product.stock %>
+			</p>
+			
+			<p>
+				<strong>Stock minimum:</strong>
+				<%= @product.stock_minimum %>
+			</p>
+			
+			<p>
+				<strong>Tax:</strong>
+				<%= @product.tax %>
+			</p>
+		</div>
+	</div>
+	
+	
+</div>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
