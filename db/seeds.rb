@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-#Product.destroy_all
+Product.destroy_all
 
 # urls = ['technics', 'business', 'sports', 'transport' ]
 urls = ['technics' ]
@@ -22,7 +22,8 @@ urls = ['technics' ]
 		stock: Random.rand(60...100),
 		stock_minimum: Random.rand(20...30),
 		tax: [0,5,10].sample,
-		remote_image_url: "http://lorempixel.com/500/400/#{urls.sample}/"
+		remote_image_url: "https://lorempixel.com/500/400/"
+		# remote_image_url: "https://lorempixel.com/500/400/#{urls.sample}/"
 		# remote_image_url: Faker::LoremPixel.image("500x400", false, urls.sample)
 	)
 end
