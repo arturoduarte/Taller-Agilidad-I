@@ -40,6 +40,9 @@ gem 'carrierwave'
 
 #para cargar datos del pruebas a traves del seed
 gem 'faker'
+
+# Gema para autenticación
+gem 'devise'
 #===============hasta Aquí========================
 
 group :development, :test do

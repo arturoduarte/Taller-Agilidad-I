@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
-  mount_uploader :image, ImageUploader
-  # mount_uploader :avatar, AvatarUploader
+	mount_uploader :image, ImageUploader
+	has_many :orders
+	has_many :users, through: :orders	
 end

@@ -3,7 +3,7 @@ body {
 	// color: #333;
 	margin: 80px;
 	margin-left: 40px;
-	//   font-family: verdana, arial, helvetica, sans-serif;
+	//font-family: verdana, arial, helvetica, sans-serif;
 	//   font-size: 13px;
 	//   line-height: 18px;
 }
@@ -107,6 +107,11 @@ $gray: rgb(175, 162, 162);
 .no-padding{
 	padding:0 !important;
 }
+
+.big-padding-b{
+	padding-bottom:2em;
+}
+
 // /*=========== Margins=========== */
 form .field, form .actions {
 	margin: 12px 0;

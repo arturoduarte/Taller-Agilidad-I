@@ -1,5 +1,13 @@
-<h1>New Product</h1>
+<div class="row">
+	<div class="card offset-xl-2 col-xl-9 white large-padding sombra text-left">
+		<h1 class="text-center text-success">Agregar Producto</h1>
+		
+		<%= render 'form', product: @product %>
+		
+	</div>
+</div>
 
-<%= render 'form', product: @product %>
-
-<%= link_to 'Volver', products_path, class: 'btn btn-dark' %>
+<div class="container">
+	<br>
+	<%= link_to 'Volver', products_path, class: 'btn btn-dark' %>
+</div>
