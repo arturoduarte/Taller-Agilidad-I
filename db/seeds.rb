@@ -10,7 +10,7 @@
 #Product.destroy_all
 
 # urls = ['technics', 'business', 'sports', 'transport' ]
-urls = ['technics', 'business', 'transport' ]
+urls = ['technics' ]
 
 
 5.times do
