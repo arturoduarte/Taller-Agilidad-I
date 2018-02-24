@@ -13,7 +13,7 @@ Product.destroy_all
 urls = ['technics' ]
 
 
-5.times do
+50.times do
 	Product.create(
 		code: Faker::Commerce.promotion_code,
 		name: Faker::Commerce.product_name,
@@ -27,3 +27,8 @@ urls = ['technics' ]
 		# remote_image_url: Faker::LoremPixel.image("500x400", false, urls.sample)
 	)
 end
+
+
+# Product.all.each do
+# 	Product.update(name: Faker::Commerce.product_name, remote_image_url: "https://lorempixel.com/400/300/")
+# end
