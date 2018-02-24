@@ -22,7 +22,7 @@ urls = ['technics' ]
 		stock: Random.rand(60...100),
 		stock_minimum: Random.rand(20...30),
 		tax: [0,5,10].sample,
-		remote_image_url: "https://lorempixel.com/500/400/"
+		remote_image_url: "https://lorempixel.com/400/300/"
 		# remote_image_url: "https://lorempixel.com/500/400/#{urls.sample}/"
 		# remote_image_url: Faker::LoremPixel.image("500x400", false, urls.sample)
 	)
