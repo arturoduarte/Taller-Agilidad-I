@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Product.destroy_all
+#Product.destroy_all
 
 # urls = ['technics', 'business', 'sports', 'transport' ]
 urls = ['technics', 'business', 'transport' ]
 
 
-50.times do
+5.times do
 	Product.create(
 		code: Faker::Commerce.promotion_code,
 		name: Faker::Commerce.product_name,
