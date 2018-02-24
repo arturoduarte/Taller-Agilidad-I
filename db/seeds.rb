@@ -9,7 +9,8 @@
 
 Product.destroy_all
 
-urls = ['technics', 'business', 'sports', 'transport' ]
+# urls = ['technics', 'business', 'sports', 'transport' ]
+urls = ['technics', 'business', 'transport' ]
 
 
 50.times do
@@ -21,6 +22,7 @@ urls = ['technics', 'business', 'sports', 'transport' ]
 		stock: Random.rand(60...100),
 		stock_minimum: Random.rand(20...30),
 		tax: [0,5,10].sample,
-		remote_image_url: "http://lorempixel.com/600/500/#{urls.sample}/"
+		# remote_image_url: "http://lorempixel.com/600/500/#{urls.sample}/"
+		remote_image_url: Faker::LoremPixel.image("600x500", false, urls.sample)
 	)
 end
