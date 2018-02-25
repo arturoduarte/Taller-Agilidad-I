@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
 	# GET /products
 	# GET /products.json
 	def index
+		#cuenta la cantidad de articulos en el carro
+
+		@quantity_order = OrderDetail.where(order_id: Order.find_by(user: current_user,payed: false)).sum('quantity')
+
 		@products = Product.all
 	end
 

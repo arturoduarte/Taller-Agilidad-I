@@ -32,6 +32,10 @@
 			<p>
 				<strong class="green-text">Tax:</strong>
 				<%= @product.tax %>
+				<br>
+				<small>
+					<%= time_ago_in_words(@product.created_at) %> ago
+				</small>
 			</p>
 		</div>
 	</div>

@@ -2,15 +2,15 @@
 <div class="text-right">
 	
 	<% if user_signed_in? %>
-		<% unless current_user.orders.sum('quantity').zero? %>
+		<% unless @quantity_order.zero? %>
 			<%= link_to carro_path, class:'btn btn-primary' do %>
-			Ver Carro(<%= current_user.orders.sum('quantity') %>) <i class="oi oi-cart"></i>
+			Ver Carro(<%= @quantity_order %>) <i class="oi oi-cart"></i>
 			<% end %>
 		<% end %>
 	
 		<% if current_user.admin? %>
 			<%= link_to '<i class="oi oi-plus"></i> Agregar Producto'.html_safe, new_product_path, class:'btn btn-primary' %>
-		<% end %>
+			<% end %>
 	<% end %>
 	
 </div><br>
@@ -62,5 +62,3 @@
 	<% end %>
 	
 </div>
-
-

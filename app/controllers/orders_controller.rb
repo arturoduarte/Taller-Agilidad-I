@@ -1,42 +1,49 @@
 class OrdersController < ApplicationController
 	before_action :authenticate_user!
 	
+	def index
+		@orders = OrderDetail.where(
+		order_id: Order.where(
+		user_id: User.find(2), payed: false).ids)
+		
+		@total = @orders.collect{|i| i.price * i.quantity}.sum()
+		# esto hace lo mismo
+		# @total = @orders.pluck("price * quantity").sum()
+	end
+	
 	def create
 		@product = Product.find(params[:product_id])
-		order = Order.find_or_create_by(user: current_user, product: @product, price: @product)
-		order.quantity +=1
-		# order = Order.new()
-		# order.product = @product
-		# order.user = current_user
+		orderCabecera = Order.find_or_create_by(user: current_user, payed: false)
+		detalle = OrderDetail.find_or_create_by(order: orderCabecera, product: @product, price: @product.price)
+		detalle.quantity +=1
 		
-		if order.save
+		orderCabecera.save
+		if detalle.save
 			redirect_to root_path
 		end
-		# byebug
 	end
-
-
-	def create
-		p = Product.find(params[:product_id])
-		o = Order.find_or_create_by(user: current_user, product: p, payed: false, price: p.price)
-		o.quantity += 1
-
-		if o.save
-			redirect_to products_path #, notice: "El producto ha sido agregado al carro."
-		else
-			redirect_to products_path, alert: "El producto NO ha sido agregado al carro"
+	
+	def pay
+		#busco las ordenes del user actual, NO pagado
+		orderCabecera = current_user.orders.where(payed: false)
+		# busco el detalle de acuerdo al orden cabecera
+		orderDetalle = OrderDetail.where(order_id: orderCabecera)
+		#fecha y hora actual
+		fechaPago = Time.now
+		
+		#Almaceno la orden a entregar
+		orderDetalle.each do |i|
+			Delivery.create(order_detail_id: i.id)
+		end
+		# guardo cabecera Order
+		if orderCabecera.update(payed: true, date_pay: fechaPago)
+			redirect_to root_path, notice: 'Su pedido será entregado en breve'
 		end
 	end
-
-
+	
 	def clean
-		@orders = Order.where(user: current_user, payed: false)
+		@orders = current_user.orders.where(payed: false)
 		@orders.destroy_all
 		redirect_to carro_path, notice: 'El carro se ha vaciado.'
-	end
-
-	def index
-		@orders = current_user.orders.where(payed: false)
-		@total = @orders.pluck("price * quantity").sum()
 	end
 end

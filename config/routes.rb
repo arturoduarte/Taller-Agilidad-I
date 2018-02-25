@@ -8,10 +8,21 @@ Rails.application.routes.draw do
 	#listado de productos
 	root 'products#index'
 
+	#--------CARRITO---------------
 	#listar ordenes
 	get 'carro', to: 'orders#index'
+	#Limpiar Carro
 	get 'clean_orders', to: 'orders#clean'
+	#Pago de productos ordenados
+	get 'pay', to: 'orders#pay'
+	#--------CARRITO-------------------
+
+	#--------Entrega-------------------
+# get
+	#--------Entrega-------------------
+
 	
+
 	#Usuarios
 	devise_for :users
 	resources :users
