@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+	#Usuarios
+	devise_for :users
+	resources :users
+	
 	#Productos y ordenes
 	resources :products do
 		#ruta para ir agregando los productos al carrito
 		get 'orders', as: 'ordenar', to: 'orders#create'
 	end
-
-	#listado de productos
-	root 'products#index'
-
+	
+	
+	
 	#--------CARRITO---------------
 	#listar ordenes
 	get 'carro', to: 'orders#index'
@@ -16,16 +19,22 @@ Rails.application.routes.draw do
 	#Pago de productos ordenados
 	get 'pay', to: 'orders#pay'
 	#--------CARRITO-------------------
-
-	#--------Entrega-------------------
-# get
-	#--------Entrega-------------------
-
 	
-
-	#Usuarios
-	devise_for :users
-	resources :users
+	
+	
+	
+	
+	authenticated :user do
+		#--------Entrega-------------------
+		root 'deliveries#index', as: :authenticated_root
+		#--------Entrega-------------------
+	end
+	
+	#listado de productos
+	root 'products#index'
+	
+	
+	
 end
 
 

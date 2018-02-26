@@ -1,0 +1,50 @@
+<div class="row">
+	<div class="card offset-xl-2 col-xl-9 white large-padding sombra text-left">
+		<h1 class="text-center text-light bg-danger">Listado de Entregas Pendientes</h1>
+		
+		<% @orders.each do |order| %>
+		<div class="container text-center pt-4">
+			<strong> Nro Orden:</strong>  <p style="display:inline" class="mr-4"><%= order.id %></p>
+			<strong>Fecha Pago:</strong> <p style="display:inline" class="mr-4"><%= order.date_pay %></p>
+			<strong>Cliente:</strong> <p style="display:inline" class="mr-4"><%= order.user.name %></p>
+		</div>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nro Orden</th>
+					<th>Producto</th>
+					<th>Cantidad</th>
+					<th>Precio</th>
+					<th>Total</th>
+					<th>Entregado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% order.order_details.each do |detalle| %>
+				<tr>
+					<td> <%= detalle.order_id %> </td>
+					<td> <%= detalle.product.name %> </td>
+					<td> <%= detalle.quantity %> </td>
+					<td> <%= detalle.price %> </td>
+					<td> <%= detalle.price * detalle.quantity %> </td>
+					<td> <%= detalle.delivered? ? 'SI' : 'NO' %> --> <button class="btn btn-success">Concretado</button> </td>
+					<% @valor = @valor.to_f + (detalle.quantity * detalle.price) %>
+				</tr>
+				
+				<% end %>
+				
+				<tr class="table-dark">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><strong>Total de la compra:</strong></td>
+					<td><strong><%= @valor %></strong></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<% end %>
+		
+	</div>
+</div>

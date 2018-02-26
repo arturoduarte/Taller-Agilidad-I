@@ -2,9 +2,11 @@ class OrdersController < ApplicationController
 	before_action :authenticate_user!
 	
 	def index
+		super#hereda del aplication-controller
+		
 		@orders = OrderDetail.where(
 		order_id: Order.where(
-		user_id: User.find(2), payed: false).ids)
+		user_id: User.find(current_user.id), payed: false).ids)
 		
 		@total = @orders.collect{|i| i.price * i.quantity}.sum()
 		# esto hace lo mismo

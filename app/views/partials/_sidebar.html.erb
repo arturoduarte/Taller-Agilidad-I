@@ -1,79 +1,80 @@
 <nav class="fixed-top navbar navbar-expand-lg navbar-light white-text green">
-	<a class="navbar-brand" href= <%= products_path %>>Inicio</a>
+	<a class="navbar-brand" href= <%= root_path %> >Inicio</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<% if user_signed_in? && current_user.admin? %>
-			<ul class="navbar-nav mr-auto">
-				
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Movimientos </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Facturación y Venta</a>
-						<a class="dropdown-item" href="#">Compras</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Ctas. a Cobrar</a>
-						<a class="dropdown-item" href="#">Ctas. a Pagar</a>
-					</div>
-				</li>
-				
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Contabilidad </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Diario</a>
-						<a class="dropdown-item" href="#">Mayor</a>
-						<div class="dropdown-divider">Prueba</div>
-						<a class="dropdown-item" href="#">Informes</a>
-					</div>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Productos</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Utilidades
-					</a>
-					<div class="dropdown-menu" aria-labellclass="collapse navbar-collapse"edby="navbarDropdown">
-						<a class="dropdown-item" href="#">Categorias</a>
-						<a class="dropdown-item" href="#">Sub-Categorias</a>
-						<a class="dropdown-item" href="#">Marcas</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Modelos</a>
-					</div>
-				</li>
-			</ul>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href= <%= products_path %> >Productos</a>
+			</li>
+			
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Movimientos </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Facturación y Venta</a>
+					<a class="dropdown-item" href="#">Compras</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Ctas. a Cobrar</a>
+					<a class="dropdown-item" href="#">Ctas. a Pagar</a>
+				</div>
+			</li>
+			
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Contabilidad </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Diario</a>
+					<a class="dropdown-item" href="#">Mayor</a>
+					<div class="dropdown-divider">Prueba</div>
+					<a class="dropdown-item" href="#">Informes</a>
+				</div>
+			</li>
+			
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Utilidades
+				</a>
+				<div class="dropdown-menu" aria-labellclass="collapse navbar-collapse"edby="navbarDropdown">
+					<a class="dropdown-item" href="#">Categorias</a>
+					<a class="dropdown-item" href="#">Sub-Categorias</a>
+					<a class="dropdown-item" href="#">Marcas</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Modelos</a>
+				</div>
+			</li>
+		</ul>
 		<% end %>
 		
 		<div class="dropdown-divider"></div>
-			<ul class="navbar-nav ml-auto">
-				<% if user_signed_in? %>
-				<li class="nav-item">
-					<%= link_to carro_path, class:'nav-link' do %>
-						(<%= @quantity_order %>) <i class="oi oi-cart"></i>
-					<% end %>
-				</li>
-					
-					<li class="nav-link bold">
-						Usuario: <%= current_user.name %>
-					</li>
-
-					<li class="nav-item">
-						<%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-					</li>
-
-				<% else %>
-					<li class="nav-item">
-						<%= link_to 'Iniciar Sesión', new_user_session_path, class: 'nav-link' %>
-					</li>
-					
-					<li class="nav-item">
-						<%= link_to 'Registrarse', new_user_registration_path, class: 'nav-link' %>
-					</li>
+		<ul class="navbar-nav ml-auto">
+			<% if user_signed_in? %>
+			<li class="nav-item">
+				<%= link_to carro_path, class:'nav-link' do %>
+				(<%= @quantity_order.nil? ? '0' : @quantity_order  %>) <i class="oi oi-cart"></i>
 				<% end %>
-			</ul>
-
-
+			</li>
+			
+			<li class="nav-link bold">
+				Usuario: <%= current_user.name %>
+			</li>
+			
+			<li class="nav-item">
+				<%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+			</li>
+			
+			<% else %>
+			<li class="nav-item">
+				<%= link_to 'Iniciar Sesión', new_user_session_path, class: 'nav-link' %>
+			</li>
+			
+			<li class="nav-item">
+				<%= link_to 'Registrarse', new_user_registration_path, class: 'nav-link' %>
+			</li>
+			<% end %>
+		</ul>
+		
+		
 	</div>
 </nav>
