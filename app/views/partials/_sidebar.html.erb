@@ -8,27 +8,27 @@
 		<% if user_signed_in? && current_user.admin? %>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link" href= <%= products_path %> >Productos</a>
+				<a class="nav-link bold" href= <%= products_path %> >Productos</a>
 			</li>
 			
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Movimientos </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#">Facturación y Venta</a>
-					<a class="dropdown-item" href="#">Compras</a>
+					<a class="dropdown-item disabled" href="#">Facturación y Venta</a>
+					<a class="dropdown-item disabled" href="#">Compras</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Ctas. a Cobrar</a>
-					<a class="dropdown-item" href="#">Ctas. a Pagar</a>
+					<a class="dropdown-item disabled" href="#">Ctas. a Cobrar</a>
+					<a class="dropdown-item disabled" href="#">Ctas. a Pagar</a>
 				</div>
 			</li>
 			
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Contabilidad </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#">Diario</a>
-					<a class="dropdown-item" href="#">Mayor</a>
+					<a class="dropdown-item disabled" href="#">Diario</a>
+					<a class="dropdown-item disabled" href="#">Mayor</a>
 					<div class="dropdown-divider">Prueba</div>
-					<a class="dropdown-item" href="#">Informes</a>
+					<a class="dropdown-item disabled" href="#">Informes</a>
 				</div>
 			</li>
 			
@@ -37,11 +37,11 @@
 					Utilidades
 				</a>
 				<div class="dropdown-menu" aria-labellclass="collapse navbar-collapse"edby="navbarDropdown">
-					<a class="dropdown-item" href="#">Categorias</a>
-					<a class="dropdown-item" href="#">Sub-Categorias</a>
-					<a class="dropdown-item" href="#">Marcas</a>
+					<a class="dropdown-item disabled" href="#">Categorias</a>
+					<a class="dropdown-item disabled" href="#">Sub-Categorias</a>
+					<a class="dropdown-item disabled" href="#">Marcas</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Modelos</a>
+					<a class="dropdown-item disabled" href="#">Modelos</a>
 				</div>
 			</li>
 		</ul>
