@@ -9,8 +9,8 @@
 
 # Product.destroy_all
 
-urls = ['technics', 'business', 'sports', 'transport' ]
-# urls = ['technics' ]
+# urls = ['technics', 'business', 'sports', 'transport' ]
+urls = ['technics' ]
 
 
 # 30.times do
@@ -30,8 +30,8 @@ urls = ['technics', 'business', 'sports', 'transport' ]
 
 u = Product.all
 u.each do |i|
-	i.image = "https://lorempixel.com/500/400/#{urls.sample}/"
-	i.name = Faker::Commerce.product_name
+	i.image = "http://placeimg.com/640/480/tech"
+	# i.name = Faker::Commerce.product_name
 	i.save
 end
 
