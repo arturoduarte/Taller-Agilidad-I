@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 	def index
 		super #hereda del aplication-controller
 		
-		@products = Product.all
+		@products = Product.all.order('updated_at desc')
 	end
 	
 	
