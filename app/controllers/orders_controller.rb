@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
 		
 		@orders = OrderDetail.where(
 		order_id: Order.where(
-		user_id: User.find(current_user.id), payed: false).ids)
+		user_id: User.find(current_user.id), payed: false).ids).order(:id)
 		
 		@total = @orders.collect{|i| i.price * i.quantity}.sum()
 		# esto hace lo mismo
@@ -21,7 +21,13 @@ class OrdersController < ApplicationController
 		
 		orderCabecera.save
 		if detalle.save
-			redirect_to root_path
+			if current_user.admin? 
+				#para que no redireccione al root del admin
+				redirect_to products_path
+			else
+				# para los user no admin
+				redirect_to root_path
+			end
 		end
 	end
 	
@@ -47,5 +53,39 @@ class OrdersController < ApplicationController
 		@orders = current_user.orders.where(payed: false)
 		@orders.destroy_all
 		redirect_to carro_path, notice: 'El carro se ha vaciado.'
+	end
+	
+	
+	def destroy
+		elemento = OrderDetail.find(params[:id])
+		##extraigo el codigo de la cabecera
+		codigo_cabcera = elemento.order_id
+		# elimino el elemento
+		elemento.destroy
+		
+		# verifico si el elemento eliminado era el último,
+		# de acuerdo a esto para también eliminar la cabecera
+		if Order.find(codigo_cabcera).order_details.count == 0
+			Order.find(codigo_cabcera).destroy
+			redirect_to carro_path
+		elsif
+			redirect_to carro_path
+		end
+	end
+	
+	
+	def calcular
+		# traemos todos los elementos
+		elemento = OrderDetail.find(params[:id])
+		# si la acción es sumar
+		if params[:accion] == 'sumar'
+			elemento.quantity += 1
+			elemento.save
+			# si la acción es restar
+		elsif params[:accion] == 'restar'
+			elemento.quantity -= 1
+			elemento.save
+		end
+		redirect_to carro_path
 	end
 end

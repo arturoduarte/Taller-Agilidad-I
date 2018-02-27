@@ -1,38 +1,49 @@
 <div class="container">
-		<% if @orders.count > 0 %>
-			<table class="table">
-			<thead>
-				<tr>
-					<th>Producto</th>
-					<th>Valor</th>
-					<th>Cantidad</th>
-					<th>Subtotal</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @orders.each do |order| %>
-					<tr>
-						<td> <%= order.product.name %> </td>
-						<td> <%= order.price %></td>
-						<td> <%= order.quantity %> </td>
-						<td> <%= order.price * order.quantity %></td>
-					</tr>
-				<% end %>
-				<tr class="table-dark">
+	<% if @orders.count > 0 %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Orden Nro</th>
+				<th>Producto</th>
+				<th>Valor</th>
+				<th>Cantidad</th>
+				<th>Subtotal</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @orders.each do |order| %>
+			<tr>
+				<td> <%= order.id %> </td>
+				<td> <%= order.product.name %> </td>
+				<td> <%= order.price %></td>
+				<td>
+					<input type="number" name="quantity" min="1" max="50" disabled value= <%= order.quantity %> >
+					<%= link_to '<i class="oi oi-plus"></i>'.html_safe, suma_path(order.id,'sumar'), class:'btn btn-info' %> 
+
+					<%= link_to '<i class="oi oi-minus"></i>'.html_safe, restar_path(order.id,'restar'), class:'btn btn-info' if order.quantity > 1 %> 
+				</td>
+
+				<td> <%= order.price * order.quantity %> </td>
+				<td> <%= link_to 'Borrar', delete_path(order), class: 'btn btn-outline-danger' %> </td>
+				
+			</tr>
+			<% end %>
+			<tr class="table-dark">
+				<td></td>
 				<td></td>
 				<td></td>
 				<td><strong>Total de la compra:</strong></td>
 				<td><strong><%= @total %></strong></td>
-				</tr>
-			</tbody>
-		</table>
+			</tr>
+		</tbody>
+	</table>
 	
-		<%= link_to 'Pagar', pay_path, class: 'btn btn-outline-success'  %>
-		<%= link_to 'Limpiar carro', clean_orders_path, class: 'btn btn-outline-danger'  %>
-		
-		<% else %>
-			<p>No tienes productos en tu carro de compra.</p>
-		<% end %>
+	<%= link_to 'Pagar', pay_path, class: 'btn btn-outline-success'  %>
+	<%= link_to 'Limpiar carro', clean_orders_path, class: 'btn btn-outline-danger'  %>
 	
-	</div>
+	<% else %>
+	<p>No tienes productos en tu carro de compra.</p>
+	<% end %>
 	
+</div>

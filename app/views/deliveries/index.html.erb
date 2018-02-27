@@ -17,20 +17,21 @@
 					<th>Cantidad</th>
 					<th>Precio</th>
 					<th>Total</th>
-					<th>Entregado</th>
+					<th>Acción</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% order.order_details.each do |detalle| %>
-				<tr>
-					<td> <%= detalle.order_id %> </td>
-					<td> <%= detalle.product.name %> </td>
-					<td> <%= detalle.quantity %> </td>
-					<td> <%= detalle.price %> </td>
-					<td> <%= detalle.price * detalle.quantity %> </td>
-					<td> <%= detalle.delivered? ? 'SI' : 'NO' %> --> <button class="btn btn-success">Concretado</button> </td>
-					<% @valor = @valor.to_f + (detalle.quantity * detalle.price) %>
-				</tr>
+					<tr>
+						<td> <%= detalle.id %> </td>
+						<td> <%= detalle.product.name %> </td>
+						<td> <%= detalle.quantity %> </td>
+						<td> <%= detalle.price %> </td>
+						<td> <%= detalle.price * detalle.quantity %> </td>
+						<td> <%= link_to 'Entregado', delivery_path(detalle), class: 'btn btn-outline-success' %> </td>
+						
+						<% @valor = @valor.to_f + (detalle.quantity * detalle.price) %>
+					</tr>
 				
 				<% end %>
 				
