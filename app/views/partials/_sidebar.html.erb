@@ -1,97 +1,33 @@
-<nav class="fixed-top navbar navbar-expand-lg navbar-light white-text green">
-	<% if user_signed_in? %>
-		<% if current_user.admin? %>
-			<a class="navbar-brand" href= <%= deliveries_path %> >Inicio</a>
-		<% else %>
-			<a class="navbar-brand" href= <%= root_path %> >Inicio</a>
-		<% end %>
-	<% end %>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-success fixed-top">
+	<a class="navbar-brand" href="<%= root_path %>">Mi App</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<% if user_signed_in? && current_user.admin? %>
+	<div class="collapse navbar-collapse" id="navbarNav">
+		
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link bold" href= <%= products_path %> >Productos</a>
-			</li>
-			
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ecommerce </a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href= <%= deliveries_path %> >Entregas Pendientes</a>
-					<a class="dropdown-item" href="#">Entregas Realizadas</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item disabled" href="#">Ctas. a Cobrar</a>
-					<a class="dropdown-item disabled" href="#">Ctas. a Pagar</a>
-				</div>
-			</li>
-			
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Movimientos </a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item disabled" href="#">Facturación y Venta</a>
-					<a class="dropdown-item disabled" href="#">Compras</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item disabled" href="#">Ctas. a Cobrar</a>
-					<a class="dropdown-item disabled" href="#">Ctas. a Pagar</a>
-				</div>
-			</li>
-			
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Contabilidad </a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item disabled" href="#">Diario</a>
-					<a class="dropdown-item disabled" href="#">Mayor</a>
-					<div class="dropdown-divider">Prueba</div>
-					<a class="dropdown-item disabled" href="#">Informes</a>
-				</div>
-			</li>
-			
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Utilidades
-				</a>
-				<div class="dropdown-menu" aria-labellclass="collapse navbar-collapse"edby="navbarDropdown">
-					<a class="dropdown-item disabled" href="#">Categorias</a>
-					<a class="dropdown-item disabled" href="#">Sub-Categorias</a>
-					<a class="dropdown-item disabled" href="#">Marcas</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item disabled" href="#">Modelos</a>
-				</div>
+				<a class="nav-link bold" href= <%= carro_path %> >Listado de Compras</a>
 			</li>
 		</ul>
-		<% end %>
-		
-		<div class="dropdown-divider"></div>
+
 		<ul class="navbar-nav ml-auto">
 			<% if user_signed_in? %>
+			<li class="nav-item bold">
+				<%= link_to "Usuario: #{current_user.name}", "#", class: 'nav-link' %>
+			</li>
 			<li class="nav-item">
-				<%= link_to carro_path, class:'nav-link' do %>
-				(<%= @quantity_order.nil? ? '0' : @quantity_order  %>) <i class="oi oi-cart"></i>
-				<% end %>
+				<%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %>
 			</li>
-			
-			<li class="nav-link bold">
-				Usuario: <%= current_user.name %>
-			</li>
-			
-			<li class="nav-item">
-				<%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-			</li>
-			
 			<% else %>
 			<li class="nav-item">
 				<%= link_to 'Iniciar Sesión', new_user_session_path, class: 'nav-link' %>
 			</li>
-			
 			<li class="nav-item">
 				<%= link_to 'Registrarse', new_user_registration_path, class: 'nav-link' %>
 			</li>
 			<% end %>
 		</ul>
-		
-		
 	</div>
 </nav>

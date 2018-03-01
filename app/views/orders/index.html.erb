@@ -1,6 +1,6 @@
 <div class="container">
 	<% if @orders.count > 0 %>
-	<table class="table">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Orden Nro</th>
@@ -8,7 +8,6 @@
 				<th>Valor</th>
 				<th>Cantidad</th>
 				<th>Subtotal</th>
-				<th>Acción</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -17,15 +16,8 @@
 				<td> <%= order.id %> </td>
 				<td> <%= order.product.name %> </td>
 				<td> <%= order.price %></td>
-				<td>
-					<input type="number" name="quantity" min="1" max="50" disabled value= <%= order.quantity %> >
-					<%= link_to '<i class="oi oi-plus"></i>'.html_safe, suma_path(order.id,'sumar'), class:'btn btn-info' %> 
-
-					<%= link_to '<i class="oi oi-minus"></i>'.html_safe, restar_path(order.id,'restar'), class:'btn btn-info' if order.quantity > 1 %> 
-				</td>
-
+				<td> <%= order.quantity %></td>
 				<td> <%= order.price * order.quantity %> </td>
-				<td> <%= link_to 'Borrar', delete_path(order), class: 'btn btn-outline-danger' %> </td>
 				
 			</tr>
 			<% end %>
@@ -38,9 +30,10 @@
 			</tr>
 		</tbody>
 	</table>
+
 	
-	<%= link_to 'Pagar', pay_path, class: 'btn btn-outline-success'  %>
-	<%= link_to 'Limpiar carro', clean_orders_path, class: 'btn btn-outline-danger'  %>
+	<%= link_to  "Volver al Home", root_path, class:'btn btn-info' %>
+	
 	
 	<% else %>
 	<p>No tienes productos en tu carro de compra.</p>

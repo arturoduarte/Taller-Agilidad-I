@@ -1,13 +1,11 @@
 class ProductsController < ApplicationController
 	before_action :set_product, only: [:show, :edit, :update, :destroy]
-	before_action :authenticate_user!, :filter_admin!, except: [:index, :show]
+	before_action :authenticate_user!, except: [:index, :show]
 	
 	# GET /products
 	# GET /products.json
 	def index
-		super #hereda del aplication-controller
-		
-		@products = Product.all.order('updated_at desc')
+		@products = Product.where.not(id: OrderDetail.all.pluck(:product_id)).order('updated_at desc')
 	end
 	
 	
