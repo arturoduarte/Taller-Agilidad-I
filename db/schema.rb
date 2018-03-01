@@ -10,75 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225153811) do
+ActiveRecord::Schema.define(version: 20180224152757) do
 
-	# These are extensions that must be enabled in order to support this database
-	enable_extension "plpgsql"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
-	create_table "deliveries", force: :cascade do |t|
-		t.datetime "date_delivery"
-		t.text "observation"
-		t.bigint "order_detail_id"
-		t.datetime "created_at", null: false
-		t.datetime "updated_at", null: false
-		t.index ["order_detail_id"], name: "index_deliveries_on_order_detail_id"
-	end
+  create_table "products", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.text "description"
+    t.float "price"
+    t.integer "stock"
+    t.string "stock_minimum"
+    t.integer "tax"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
-	create_table "order_details", force: :cascade do |t|
-		t.integer "quantity", default: 0
-		t.float "price"
-		t.boolean "delivered", default: false
-		t.bigint "order_id"
-		t.bigint "product_id"
-		t.datetime "created_at", null: false
-		t.datetime "updated_at", null: false
-		t.index ["order_id"], name: "index_order_details_on_order_id"
-		t.index ["product_id"], name: "index_order_details_on_product_id"
-	end
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.boolean "admin", default: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
 
-	create_table "orders", force: :cascade do |t|
-		t.boolean "payed", default: false
-		t.datetime "date_pay"
-		t.bigint "user_id"
-		t.datetime "created_at", null: false
-		t.datetime "updated_at", null: false
-		t.index ["user_id"], name: "index_orders_on_user_id"
-	end
-
-	create_table "products", force: :cascade do |t|
-		t.string "code"
-		t.string "name"
-		t.text "description"
-		t.float "price"
-		t.integer "stock"
-		t.string "stock_minimum"
-		t.integer "tax"
-		t.string "image"
-		t.datetime "created_at", null: false
-		t.datetime "updated_at", null: false
-	end
-
-	create_table "users", force: :cascade do |t|
-		t.string "email", default: "", null: false
-		t.string "encrypted_password", default: "", null: false
-		t.string "reset_password_token"
-		t.datetime "reset_password_sent_at"
-		t.datetime "remember_created_at"
-		t.integer "sign_in_count", default: 0, null: false
-		t.datetime "current_sign_in_at"
-		t.datetime "last_sign_in_at"
-		t.inet "current_sign_in_ip"
-		t.inet "last_sign_in_ip"
-		t.datetime "created_at", null: false
-		t.datetime "updated_at", null: false
-		t.string "name"
-		t.boolean "admin", default: false
-		t.index ["email"], name: "index_users_on_email", unique: true
-		t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-	end
-
-	add_foreign_key "deliveries", "order_details"
-	add_foreign_key "order_details", "orders"
-	add_foreign_key "order_details", "products"
-	add_foreign_key "orders", "users"
 end
