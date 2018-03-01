@@ -32,12 +32,13 @@ Rails.application.routes.draw do
 	#--------DELIVERY-------------------
 	
 	
+	get 'deliveries', to: 'deliveries#index'
 	
-	authenticated :user do
-		#--------Entrega-------------------
-		root 'deliveries#index', as: :ordenes_root
-		#--------Entrega-------------------
-	end
+	# authenticated :user do
+	# 	#--------Entrega-------------------
+	# 	root 'deliveries#index', as: :root
+	# 	#--------Entrega-------------------
+	# end
 	
 	#listado de productos
 	root 'products#index'

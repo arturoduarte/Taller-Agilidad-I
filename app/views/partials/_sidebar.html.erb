@@ -1,5 +1,11 @@
 <nav class="fixed-top navbar navbar-expand-lg navbar-light white-text green">
-	<a class="navbar-brand" href= <%= root_path %> >Inicio</a>
+	<% if user_signed_in? %>
+		<% if current_user.admin? %>
+			<a class="navbar-brand" href= <%= deliveries_path %> >Inicio</a>
+		<% else %>
+			<a class="navbar-brand" href= <%= root_path %> >Inicio</a>
+		<% end %>
+	<% end %>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -14,7 +20,7 @@
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ecommerce </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href= <%= ordenes_root_path %> >Entregas Pendientes</a>
+					<a class="dropdown-item" href= <%= deliveries_path %> >Entregas Pendientes</a>
 					<a class="dropdown-item" href="#">Entregas Realizadas</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item disabled" href="#">Ctas. a Cobrar</a>
